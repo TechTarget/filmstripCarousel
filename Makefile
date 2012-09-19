@@ -12,13 +12,13 @@ FILESIZE_FAIL = "${FILESIZE_GZIP} bytes  ^(>_<)^"
 define FILESIZE_CHECK
 	if [ ${FILESIZE_GZIP} -gt ${FILESIZE_MAX} ]; then \
 		tput setaf 1; \
-        echo ${FILESIZE_FAIL}; \
-        tput sgr0; \
+		echo ${FILESIZE_FAIL}; \
+		tput sgr0; \
     else \
-    	tput setaf 2; \
-    	echo ${FILESIZE_PASS}; \
-    	tput sgr0; \
-    fi
+		tput setaf 2; \
+		echo ${FILESIZE_PASS}; \
+		tput sgr0; \
+	fi
 endef
 
 default:
