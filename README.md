@@ -1,1 +1,1 @@
-jQuery plugin for Filmstrip Carousel microsite component
+Filmstrip Carousel microsite component
