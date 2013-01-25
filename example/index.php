@@ -1,7 +1,4 @@
-<?php
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
-?>
+<?php error_reporting(E_ALL); ini_set('display_errors', '1'); ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -52,9 +49,6 @@ ini_set('display_errors', '1');
 			<h6>6 items, navigation inline, pagination on</h6>
 			<?php include('inc/fsFull6ItemsNavInlinePaginationOn.php'); ?>
 
-			<h6>3 items, navigation inline, pagination on</h6>
-			<?php include('inc/fsFull3ItemsNavInlinePaginationOn.php'); ?>
-
 			<h6>42 items, navigation inline, pagination on</h6>
 			<?php include('inc/fsFull42ItemsNavInlinePaginationOn.php'); ?>
 
@@ -63,6 +57,9 @@ ini_set('display_errors', '1');
 
 			<h6>9 items, navigation off, pagination on</h6>
 			<?php include('inc/fsFull9ItemsNavOffPaginationOn.php'); ?>
+
+      <h6>3 items, navigation inline, pagination on</h6>
+      <?php include('inc/fsFull3ItemsNavInlinePaginationOn.php'); ?>
 
 			<h6>9 items, navigation off, pagination off</h6>
 			<?php include('inc/fsFull9ItemsNavOffPaginationOff.php'); ?>

@@ -54,8 +54,7 @@ body { background-color: #000; }
 
 
 
-#micrositeContentFooter h6, #micrositeContentColumnLeft h6 { clear: both; background-color: red; display: block; font-weight: bold; font-size: 14px; padding: 10px !important; color: #fff; margin: 0 0 -35px !important; }
-#micrositeContentFooter h6 { background-color: blue; }
+#micrositeContentFooter h6, #micrositeContentColumnLeft h6 { clear: both; border: 1px solid #666; background-color: #333; display: block; font-weight: bold; font-size: 14px; padding: 10px !important; color: #fff; margin: 0 0 -15px !important; }
 
 /*
 .filmstripWindow > ul > li { border: 1px solid blue; }
@@ -65,12 +64,16 @@ body { background-color: #000; }
 .filmstripNavigationOutside .filmstripPrevious, .filmstripNavigationOutside .filmstripNext { background-color: red; }
 */
 
+
+
+
+
+
 /* filmstrip widget */
 /* widget's parent container width must be calculated like this: (width of .filmstripPrevious) + (width of .filmstripNext) + N(width of .filmstripWindow > ul > li) where N = the number of items on display at a time */
 .filmstrip { position: relative; margin: 40px 0 20px; }
 /*.filmstrip.filmstripNavigationHide { padding: 0; }*/
 .filmstripWindow { overflow: hidden; *position: relative; }
-.filmstripWindow, .filmstripPrevious, .filmstripNext { }
 .filmstripWindow > ul { list-style-type: none; margin: 0 !important; padding: 0 !important; white-space: nowrap; position: relative; left: 0; overflow: hidden; width: 10000px; }
 .filmstripWindow > ul > li { display: block; float: left; padding: 5px 10px 0; position: relative; white-space: normal; width: 270px; }
 .filmstripWindow > ul { -webkit-transition: left .5s; -moz-transition: left .5s; -ms-transition: left .5s; -o-transition: left .5s; transition: left .5s; }
