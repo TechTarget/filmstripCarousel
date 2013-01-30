@@ -20,6 +20,8 @@
   var pluginName = 'filmstripCarousel';
   var defaults = {
     itemsToShow: 3,
+    autoplay: false,
+    autoplaySpeed: 5000,
     navigation: true,
     navigationPosition: 'Outside', // Inline, Outside
     pagination: true,
@@ -55,6 +57,35 @@
     // adjust width of filmstrip list to contain all the items
     itemsContainer.width(itemsContainerWidth);
 
+    // autoplay object
+    var autoplay = {
+
+      // initialize autoplay
+      start: function() {
+        this.timer = setInterval(
+          $.proxy(this.triggerSlide, this),
+          o.autoplaySpeed
+        );
+      },
+
+      // trigger slide
+      triggerSlide: function(){
+
+        // temp kludge
+        if ((itemGroupShowing + 1) === itemGroups) { itemGroupShowing = -1; }
+
+        filmstrip.trigger('filmstrip.move', 'next');
+
+      },
+
+      // stop autoplay
+      stop: function() {
+        console.log('stop');
+        clearTimeout(this.timer);
+      }
+
+    };
+
     // check if navigation or pagination is enabled
     if (showControls) {
 
@@ -62,6 +93,9 @@
       if (itemCount <= itemsToShow) {
         return;
       }
+
+
+
 
       // dom element that contains the filmstrip controls
       var controls = $('<div/>', {
@@ -99,8 +133,10 @@
           'class': 'filmstripPagination'
         }).on(o.paginationEvent, 'a', function (e) {
           e.preventDefault();
+          if (o.autoplay) { autoplay.stop(); }
           paginationGroupIndex = $(this).data('filmstripGroup');
           filmstrip.trigger('filmstrip.move', paginationGroupIndex);
+          if (o.autoplay) { autoplay.start(); }
         }).append(paginationItems.join(''));
 
       }
@@ -116,9 +152,11 @@
           text: 'Previous'
         }).on('click', function (e) {
           e.preventDefault();
+          if (o.autoplay) { autoplay.stop(); }
           if ( !$(this).hasClass('disabled') ) {
             filmstrip.trigger('filmstrip.move', 'previous');
           }
+          if (o.autoplay) { autoplay.start(); }
         });
 
         // next button
@@ -129,9 +167,11 @@
           text: 'Next'
         }).on('click', function (e) {
           e.preventDefault();
+          if (o.autoplay) { autoplay.stop(); }
           if ( !$(this).hasClass('disabled') ) {
             filmstrip.trigger('filmstrip.move', 'next');
           }
+          if (o.autoplay) { autoplay.start(); }
         });
 
       }
@@ -231,6 +271,12 @@
     if (itemCount === 0) {
       filmstrip.remove();
       return;
+    }
+
+    // autoplay
+    // this whole plugin needs to be rewritten
+    if (o.autoplay) {
+      autoplay.start();
     }
 
   };
