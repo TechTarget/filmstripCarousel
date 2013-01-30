@@ -15,7 +15,10 @@
 				</div>
 			</li>
 			<li>
-				<div class="filmstripThumbnailHeader">Optimized Integration</div><div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+				<div class="filmstripThumbnailHeader">Optimized Integration</div>
+        <div class="filmstripThumbnail">
+          <img data-src="example.com/200x60/mo">
+        </div>
 				<div class="filmstripThumbnailText">
 					<p>ROI is what every IT buyer strives for. HP Factory Express delivers ROI through collaboration, flexibility, confidence, and value.</p>
 					<a href="/HPCI2/document/1347915436_550" class="readmore">View Now &gt;</a>

@@ -16,14 +16,20 @@
 				</div>
 			</li>
 			<li>
-				<div class="filmstripThumbnailHeader">Optimized Integration</div><div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+				<div class="filmstripThumbnailHeader">Optimized Integration</div>
+        <div class="filmstripThumbnail">
+          <img data-src="example.com/270x80/mo">
+        </div>
 				<div class="filmstripThumbnailText">
 					<p>ROI is what every IT buyer strives for. HP Factory Express delivers ROI through collaboration, flexibility, confidence, and value.</p>
 					<a href="/HPCI2/document/1347915436_550" class="readmore">View Now &gt;</a>
 				</div>
 			</li>
 			<li>
-				<div class="filmstripThumbnailHeader">SpiceWorks Gen8 Webinar</div><div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+				<div class="filmstripThumbnailHeader">SpiceWorks Gen8 Webinar</div>
+        <div class="filmstripThumbnail">
+          <img data-src="example.com/270x80/mo">
+        </div>
 				<div class="filmstripThumbnailText">
 					<p> This webinar discusses how HP accelerates accelerates your server infrastructure and saves you time. Also, check out the top 10 Gen8 benefits.</p>
 				</div>

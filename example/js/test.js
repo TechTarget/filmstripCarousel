@@ -8,7 +8,7 @@ $(document).on('ready', function() {
       'mo': {
           background: '#999',
           foreground: '#efefef',
-          size: 15
+          size: 16
         }
       }
     });
