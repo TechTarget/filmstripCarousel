@@ -6,15 +6,16 @@ $(document).on('ready', function() {
     domain: 'example.com',
     themes: {
       'mo': {
-          background: '#999',
-          foreground: '#efefef',
+          background: '#ccc',
+          foreground: '#999',
           size: 16
         }
       }
     });
 
 	$('#fsInline1').filmstripCarousel({
-		navigationPosition: 'Inline'
+		navigationPosition: 'Inline',
+    paginationEvent: 'mouseover'
 	});
 
 	$('#fsInline2').filmstripCarousel({

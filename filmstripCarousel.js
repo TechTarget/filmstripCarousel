@@ -23,6 +23,7 @@
     navigation: true,
     navigationPosition: 'Outside', // Inline, Outside
     pagination: true,
+    paginationEvent: 'click', // click, mouseover
     verboseClasses: true
   };
 
@@ -38,18 +39,18 @@
   Plugin.prototype.init = function () {
 
     // plugin vars
-    var o = this.options;
-    var filmstrip = $(this.element);
-    var itemsContainer = filmstrip.children('.filmstripWindow').children('ul');
-    var items = itemsContainer.find('> li');
-    var itemCount = items.size();
-    var itemWidth = items.outerWidth();
-    var itemsToShow = o.itemsToShow;
-    var itemsContainerWidth = (itemWidth * itemCount);
-    var itemGroups = Math.ceil(itemCount/itemsToShow);
-    var itemGroupShowing = 0;
-    var filmstripWindowWidth = itemWidth * itemsToShow;
-    var showControls = o.navigation || o.pagination;
+    var o = this.options,
+        filmstrip = $(this.element),
+        itemsContainer = filmstrip.children('.filmstripWindow').children('ul'),
+        items = itemsContainer.find('> li'),
+        itemCount = items.size(),
+        itemWidth = items.outerWidth(),
+        itemsToShow = o.itemsToShow,
+        itemsContainerWidth = (itemWidth * itemCount),
+        itemGroups = Math.ceil(itemCount/itemsToShow),
+        itemGroupShowing = 0,
+        filmstripWindowWidth = itemWidth * itemsToShow,
+        showControls = o.navigation || o.pagination;
 
     // adjust width of filmstrip list to contain all the items
     itemsContainer.width(itemsContainerWidth);
@@ -96,9 +97,9 @@
         // append pagination items to pagination object
         pagination = $('<span/>', {
           'class': 'filmstripPagination'
-        }).on('click', 'a', function (e) {
-          paginationGroupIndex = $(this).data('filmstripGroup');
+        }).on(o.paginationEvent, 'a', function (e) {
           e.preventDefault();
+          paginationGroupIndex = $(this).data('filmstripGroup');
           filmstrip.trigger('filmstrip.move', paginationGroupIndex);
         }).append(paginationItems.join(''));
 
