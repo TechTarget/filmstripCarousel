@@ -7,7 +7,7 @@
 	<title>Filmstrip Carousel Tests</title>
 	<link rel="stylesheet" href="css/style.css" media="screen" />
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-	<script src="../filmstripCarousel.js"></script>
+	<script src="../filmstripCarousel.min.js"></script>
 	<script src="js/test.js"></script>
 
 </head>

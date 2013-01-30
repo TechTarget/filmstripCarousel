@@ -1,5 +1,5 @@
 /*!
-* Filmstrip Carousel v1.0.1 (http://okize.github.com/)
+* Filmstrip Carousel v1.0.2 (http://okize.github.com/)
 * Copyright (c) 2013 | Licensed under the MIT license - http://www.opensource.org/licenses/mit-license.php
 */
 
