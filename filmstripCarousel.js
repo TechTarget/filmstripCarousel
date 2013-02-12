@@ -80,7 +80,6 @@
 
       // stop autoplay
       stop: function() {
-        console.log('stop');
         clearTimeout(this.timer);
       }
 
