@@ -1,5 +1,3 @@
-
-
 <div class="micrositeContentColumnSpan">
 <!-- BEGIN: Filmstrip Carousel -->
 <div class="filmstrip" id="fsOutside2">

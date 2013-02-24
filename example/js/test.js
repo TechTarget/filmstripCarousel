@@ -11,10 +11,11 @@ $(document).on('ready', function() {
           size: 16
         }
       }
-    });
+  });
 
   $('#fsInline1').filmstripCarousel({
     navigationPosition: 'Inline',
+    linkEntireItem: true,
     autoplay: true,
     autoplaySpeed: 5000
   });

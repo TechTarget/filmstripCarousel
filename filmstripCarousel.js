@@ -1,5 +1,5 @@
 /*!
-* Filmstrip Carousel v1.0.2 (http://okize.github.com/)
+* Filmstrip Carousel v1.0.4 (http://okize.github.com/)
 * Copyright (c) 2013 | Licensed under the MIT license - http://www.opensource.org/licenses/mit-license.php
 */
 
@@ -19,9 +19,10 @@
   // the default settings
   var pluginName = 'filmstripCarousel';
   var defaults = {
-    itemsToShow: 3,
     autoplay: false,
     autoplaySpeed: 5000,
+    itemsToShow: 3,
+    linkEntireItem: false,
     navigation: true,
     navigationPosition: 'Outside', // Inline, Outside
     pagination: true,
@@ -85,6 +86,18 @@
 
     };
 
+    // if linkSlide enabled, wrap the contents of the slide in an href
+    if (o.linkEntireItem) {
+      var item, href;
+      items.each( function(i) {
+        item = items.eq(i);
+        href = item.find('a').attr('href');
+        if (typeof href !== 'undefined') {
+          item.contents().wrapAll('<a href="' + href + '">');
+        }
+      });
+    }
+
     // check if navigation or pagination is enabled
     if (showControls) {
 
@@ -92,9 +105,6 @@
       if (itemCount <= itemsToShow) {
         return;
       }
-
-
-
 
       // dom element that contains the filmstrip controls
       var controls = $('<div/>', {
