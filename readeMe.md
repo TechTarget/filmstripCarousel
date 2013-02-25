@@ -1,1 +1,0 @@
-Filmstrip Carousel microsite component
