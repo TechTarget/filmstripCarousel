@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Filmstrip Carousel Component Tests</title>
+    <link rel="stylesheet" href="css/style.css" media="screen">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="../filmstripCarousel.js"></script>
+    <script src="javascript/test.js"></script>
+  </head>
+  <body>
+    <div id="micrositeContainer">
+      <div id="micrositeContainerInner">
+        <div id="micrositeContainerCompress">
+          <div id="micrositeHeader">
+            <h2>Header</h2>
+          </div>
+          <div id="micrositeContent">
+            <div id="micrositeContentColumnLeft">
+              <h6>6 items, navigation inline, pagination on</h6>
+              <div id="fsInline1" class="filmstrip">
+                <div class="filmstripWindow">
+                  <ul class="listTypeFilmstrip">
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <h6>3 items, navigation inline, pagination on</h6>
+              <div id="fsInline2" class="filmstrip">
+                <div class="filmstripWindow">
+                  <ul class="listTypeFilmstrip">
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <h6>42 items, navigation inline, pagination on</h6>
+              <div id="fsInline3" class="filmstrip">
+                <div class="filmstripWindow">
+                  <ul class="listTypeFilmstrip">
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <h6>9 items, navigation inline, pagination off</h6>
+              <div id="fsInline4" class="filmstrip">
+                <div class="filmstripWindow">
+                  <ul class="listTypeFilmstrip">
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <h6>9 items, navigation off, pagination on</h6>
+              <div id="fsInline5" class="filmstrip">
+                <div class="filmstripWindow">
+                  <ul class="listTypeFilmstrip">
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/200x60/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <h6>9 items, navigation off, pagination off</h6>
+            </div>
+            <div id="micrositeContentColumnRight">
+              <h2>Right Column</h2>
+            </div>
+            <div id="micrositeContentColumnFull">
+              <h6>6 items, navigation inline, pagination on</h6>
+              <div id="fsOutside1" class="filmstrip">
+                <div class="filmstripWindow">
+                  <ul class="listTypeFilmstrip">
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <h6>42 items, navigation inline, pagination on</h6>
+              <div id="fsOutside2" class="filmstrip">
+                <div class="filmstripWindow">
+                  <ul class="listTypeFilmstrip">
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <h6>9 items, navigation inline, pagination off</h6>
+              <div id="fsOutside3" class="filmstrip">
+                <div class="filmstripWindow">
+                  <ul class="listTypeFilmstrip">
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <h6>9 items, navigation off, pagination on</h6>
+              <div id="fsOutside4" class="filmstrip">
+                <div class="filmstripWindow">
+                  <ul class="listTypeFilmstrip">
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <h6>3 items, navigation inline, pagination on</h6>
+              <div id="fsOutside5" class="filmstrip">
+                <div class="filmstripWindow">
+                  <ul class="listTypeFilmstrip">
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <h6>9 items, navigation off, pagination off</h6>
+              <div id="fsOutside6" class="filmstrip">
+                <div class="filmstripWindow">
+                  <ul class="listTypeFilmstrip">
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                    <li>
+                      <div class="filmstripThumbnailHeader">@Html.Ipsum.h4(4)</div>
+                      <div class="filmstripThumbnail"><img data-src="example.com/270x80/mo"></div>
+                      <div class="filmstripThumbnailText">@Html.Ipsum.p(1, 3)<a href="" class="readmore">View Now ></a></div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div id="micrositeFooter">
+              <h2>Footer</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

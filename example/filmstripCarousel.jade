@@ -1,0 +1,12 @@
+.filmstrip(id=componentId)
+  .filmstripWindow
+    ul.listTypeFilmstrip
+      - for (var i = 0; i < itemCount; ++i) {
+      li
+        .filmstripThumbnailHeader @Html.Ipsum.h4(4)
+        .filmstripThumbnail
+          img(data-src='example.com/#{imageSize}/mo')
+        .filmstripThumbnailText
+          @Html.Ipsum.p(1, 3)
+          a.readmore(href='') View Now >
+      - }

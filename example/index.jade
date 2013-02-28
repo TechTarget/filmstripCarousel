@@ -1,0 +1,56 @@
+!!! 5
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    title Filmstrip Carousel Component Tests
+    link(rel='stylesheet', href='css/style.css', media='screen')
+    script(src='//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js')
+    script(src='../filmstripCarousel.js')
+    script(src='javascript/test.js')
+  body
+    #micrositeContainer
+      #micrositeContainerInner
+        #micrositeContainerCompress
+          #micrositeHeader
+            h2 Header
+          #micrositeContent
+            #micrositeContentColumnLeft
+              h6 6 items, navigation inline, pagination on
+              - var componentId = 'fsInline1', itemCount = 6, imageSize = '200x60'
+              include filmstripCarousel
+              h6 3 items, navigation inline, pagination on
+              - var componentId = 'fsInline2', itemCount = 3, imageSize = '200x60'
+              include filmstripCarousel
+              h6 42 items, navigation inline, pagination on
+              - var componentId = 'fsInline3', itemCount = 42, imageSize = '200x60'
+              include filmstripCarousel
+              h6 9 items, navigation inline, pagination off
+              - var componentId = 'fsInline4', itemCount = 9, imageSize = '200x60'
+              include filmstripCarousel
+              h6 9 items, navigation off, pagination on
+              - var componentId = 'fsInline5', itemCount = 9, imageSize = '200x60'
+              include filmstripCarousel
+              h6 9 items, navigation off, pagination off
+            #micrositeContentColumnRight
+              h2 Right Column
+            #micrositeContentColumnFull
+              h6 6 items, navigation inline, pagination on
+              - var componentId = 'fsOutside1', itemCount = 6, imageSize = '270x80'
+              include filmstripCarousel
+              h6 42 items, navigation inline, pagination on
+              - var componentId = 'fsOutside2', itemCount = 42, imageSize = '270x80'
+              include filmstripCarousel
+              h6 9 items, navigation inline, pagination off
+              - var componentId = 'fsOutside3', itemCount = 9, imageSize = '270x80'
+              include filmstripCarousel
+              h6 9 items, navigation off, pagination on
+              - var componentId = 'fsOutside4', itemCount = 9, imageSize = '270x80'
+              include filmstripCarousel
+              h6 3 items, navigation inline, pagination on
+              - var componentId = 'fsOutside5', itemCount = 3, imageSize = '270x80'
+              include filmstripCarousel
+              h6 9 items, navigation off, pagination off
+              - var componentId = 'fsOutside6', itemCount = 9, imageSize = '270x80'
+              include filmstripCarousel
+            #micrositeFooter
+              h2 Footer

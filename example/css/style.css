@@ -40,9 +40,6 @@ a:focus { color: #2ba6cb; outline: none; }
 #micrositeContentColumnFull { margin: 15px 20px 25px; }
 #micrositeContentColumnFull { margin: 0 20px; }
 
-#micrositeContent h2 { font-size: 25px; margin: 0; }
-#micrositeContent h6 { clear: both; border: 1px solid #666; border-left: 5px solid #2ba6cb; background-color: #333; display: block; font-weight: bold; font-size: 14px; padding: 10px 10px 10px 44px !important; color: #fff; margin: 0 0 -15px -50px !important; }
-
 #micrositeHeader,
 #micrositeFooter,
 #micrositeContentColumnRight { background: #f2f2f2; border: solid 1px #e6e6e6; padding: 25px; }
@@ -57,6 +54,9 @@ a:focus { color: #2ba6cb; outline: none; }
 
 
 
+#micrositeContent h2 { font-size: 25px; margin: 0; }
+#micrositeContent h6 { clear: both; border: 1px solid #666; border-left: 5px solid #2ba6cb; background-color: #333; display: block; font-weight: bold; font-size: 14px; padding: 10px 10px 10px 44px !important; color: #fff; margin: 0 0 15px -50px !important; }
+.filmstripThumbnailHeader h4 { font-size: 14px; text-transform: capitalize; }
 
 
 
@@ -75,7 +75,7 @@ a:focus { color: #2ba6cb; outline: none; }
 
 /* filmstrip widget */
 /* widget's parent container width must be calculated like this: (width of .filmstripPrevious) + (width of .filmstripNext) + N(width of .filmstripWindow > ul > li) where N = the number of items on display at a time */
-.filmstrip { position: relative; margin: 40px 0 20px; }
+.filmstrip { position: relative; margin: 0 0 20px; }
 /*.filmstrip.filmstripNavigationHide { padding: 0; }*/
 .filmstripWindow { overflow: hidden; *position: relative; }
 .filmstripWindow > ul { list-style-type: none; margin: 0 !important; padding: 0 !important; white-space: nowrap; position: relative; left: 0; overflow: hidden; width: 10000px; }
@@ -89,12 +89,13 @@ a:focus { color: #2ba6cb; outline: none; }
 .filmstripThumbnailText .readMore { font-size: 14px; }
 
 .filmstripControls { clear: both; margin: 10px 0 0; text-align: center; }
-.filmstripPrevious, .filmstripNext { display: inline-block; height: 18px; width: 11px; white-space: nowrap; overflow: hidden; text-indent: 100%; *text-indent: 0; *font-size: 0; }
-.filmstripPrevious { background: transparent url(../images/slideControlPreviousOn.png) no-repeat 0 0; }
-.filmstripNext { background: transparent url(../images/slideControlNextOn.png) no-repeat 0 0; }
-.filmstripPrevious.disabled { background-image: url(../images/slideControlPreviousOff.png); cursor: default; }
-.filmstripNext.disabled { background-image: url(../images/slideControlNextOff.png); cursor: default; }
+.filmstripPrevious, .filmstripNext { display: inline-block; height: 18px; width: 11px; white-space: nowrap; overflow: hidden; text-indent: 100%; *text-indent: 0; *font-size: 0; background-color: transparent; background-repeat: no-repeat; background-position: 0 0; }
+.filmstripPrevious { background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAASCAYAAACNdSR1AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAALJJREFUeNpi/P//PwMyMGu8ZACkzjNggodMWAQnMGAHBUxopgYAKXssCg+eqtfbwISkUACPqQkgAtnkAiCWx6KwEWjqA7hioKkKQKoem6eQbYOZvACXp4CmfoArJuQpZAEmfEGFLsDEQAJgwmYCrshhgrrrIBbF9lD/YDgjAZfp0MhCKIYGeiMWxfLIzmRCc+NDLBrqoZGGUAwNfFyeBUcaI5b0fABHJAUyERMZMGcCBBgAwII5XyuaXB4AAAAASUVORK5CYII=); }
+.filmstripNext { background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAASCAYAAACNdSR1AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAALtJREFUeNpiNG24+ICBgUGeARMYnqrXu4AswATEBQzYwQR0ASag7g1A+iAWxfZmjZcC0E0GgQRcpgM1CKAoBpoOcncjFsXyyM5kQnPjQywa6oGmK6AoBpr+AY9nF4AIxv///6OIAk05APIcFg2BTFgEcQYlEwMJgImYyIDZyITm3gAc7j0IijwmJIUCeExNQHdGAY4E1QiNNIhiaKDXY1H4ENk2JuRAx+YpaGRBFBPyFHrQ4QwqdAGAAAMAqE439pizWsYAAAAASUVORK5CYII=); }
+.filmstripPrevious.disabled { cursor: default; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAASCAYAAACNdSR1AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAALJJREFUeNpi/P//PwMyOH7iqAGQOs+ACR4yYRGcwIAdFDChmRoApOyxKDxoaWG9gQlJoQAeUxNABLLJBUAsj0VhI9DUB3DFQFMVgFQ9Nk8h2wYzeQEuTwFN/QBXTMhTyAJM+IIKXYCJgQTAhM0EXJHDBHXXQSyK7aH+wXBGAi7ToZGFUAwN9EYsiuWRncmE5saHWDTUQyMNoRga+Lg8C440Rizp+QCOSApkIiYyYM4ECDAAFAo69b+iA5cAAAAASUVORK5CYII=); }
+.filmstripNext.disabled { cursor: default; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAASCAYAAACNdSR1AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAALtJREFUeNpiPHb8yAMGBgZ5BkxgaGlhfQFZgAmICxiwgwnoAkxA3RuA9EEsiu2PnzgagG4yCCTgMh2oQQBFMdB0kLsbsSiWR3YmE5obH2LRUA80XQFFMdD0D3g8uwBEMP7//x9FFGjKAZDnsGgIZMIiiDMomRhIAEzERAbMRiY09wbgcO9BUOQxISkUwGNqArozCnAkqEZopEEUQwO9HovCh8i2MSEHOjZPQSMLopiQp9CDDmdQoQsABBgA3m04wYRCMrsAAAAASUVORK5CYII=); }
 .filmstripPrevious:focus, .filmstripNext:focus { background-color: transparent; }
+
 
 .filmstripNavigationOutside.filmstrip { padding: 0 40px; }
 .filmstripNavigationOutside .filmstripPrevious, .filmstripNavigationOutside .filmstripNext { width: 40px; position: absolute; top: 0; height: 220px; background-position: 50% 50%; }
@@ -107,7 +108,7 @@ a:focus { color: #2ba6cb; outline: none; }
 
 
 .filmstripPagination { text-align: center; padding: 10px 0; *position: relative; *zoom: 1; }
-.filmstripPagination a { display: inline-block; margin: 0 6px; height: 11px; width: 11px; background: url(../images/slideControlPagination.png) no-repeat 0 0; white-space: nowrap; overflow: hidden; text-indent: 100%; *text-indent: 0; *font-size: 0; }
+.filmstripPagination a { display: inline-block; margin: 0 6px; height: 11px; width: 11px; white-space: nowrap; overflow: hidden; text-indent: 100%; *text-indent: 0; *font-size: 0; background-color: transparent; background-repeat: no-repeat; background-position: 0 0; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAALCAYAAAB7/H1+AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMRJREFUeNqUk7ENgzAURI1lZRZcZQGqjEDNErRJYTfJEmmpMwKVd8AlmyRn65AoAv4+6QTyf/8D5tx47xXVwT18gy28wDP8gUMCnHMZbF7hkP3eu8xqDh3gNzzCV/jC68j1YXs6hp6yrCvDN33ArfqvlvUVTUrCglsNP+kI3Df0u/sia7hPEkm5zBpuvkS2YrDV/KMSLTWsZkwkmmtYzZzGAhjJiVnN8D9PGiLrgeEvsokzXJhSTksnLwlNU8pp6eT9BBgALtNIryQ2si8AAAAASUVORK5CYII=); }
 .filmstripPagination a.active { background-position: -11px 0; cursor: default; }
 .filmstripPagination a:focus { background-color: transparent; }
 
