@@ -21,6 +21,12 @@ endef
 
 default:
 
+	@echo "* compiling jade templates..."
+	@jade -P ./example/index.jade
+
+	@echo "* compiling coffeescript..."
+	@coffee -p ${SCRIPT_NAME}.coffee > ${SCRIPT_NAME}.js
+
 	@echo "* linting..."
 	@jshint ${SCRIPT_NAME}.js --show-non-errors
 
