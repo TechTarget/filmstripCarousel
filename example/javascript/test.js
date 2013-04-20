@@ -17,7 +17,8 @@ $(document).on('ready', function() {
 
   $('#fsInline1').filmstripCarousel({
     navigationPosition: 'Inline',
-    // linkEntireItem: true,
+    linkEntireItem: true,
+    counter: true,
     autoplay: true,
     autoplaySpeed: 5000
   });
