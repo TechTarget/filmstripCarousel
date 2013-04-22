@@ -1,6 +1,7 @@
 ###!
 filmstripCarousel v1.0.5 (http://okize.github.com/)
-Copyright (c) 2013 | Licensed under the MIT license - http://www.opensource.org/licenses/mit-license.php
+Copyright (c) 2013 | Licensed under the MIT license
+http://www.opensource.org/licenses/mit-license.php
 ###
 
 ((factory) ->
@@ -21,13 +22,14 @@ Copyright (c) 2013 | Licensed under the MIT license - http://www.opensource.org/
   defaults =
     autoplay: false
     autoplaySpeed: 5000
+    autoplayPauseOnHover: true
     itemsToShow: 3
     linkEntireItem: false
     navigation: true
     navigationPosition: 'Outside' # Inline or Outside
+    counter: false
     pagination: true
-    paginationEvent: 'click' # click, mouseover
-    verboseClasses: true
+    paginationEvent: 'click' # click or mouseover
 
   # plugin constructor
   class Plugin
@@ -37,211 +39,178 @@ Copyright (c) 2013 | Licensed under the MIT license - http://www.opensource.org/
       @_defaults = defaults
       @_name = pluginName
       @el = $(@element)
+      @container = @el.children('.filmstripWindow').children('ul')
+      @items = @container.find('> li')
+      @itemCount = @items.size()
+      @itemWidth = @items.outerWidth()
+      @itemsToShow = @options.itemsToShow
+      @containerWidth = (@itemWidth * @itemCount)
+      @windowWidth = @itemWidth * @itemsToShow
+      @itemGroups = Math.ceil(@itemCount / @itemsToShow)
+      @itemGroupShowing = 1
+      @showControls = @options.navigation or @options.pagination
       @init()
 
     # initialize plugin
     init: ->
 
-      o = @options
-      filmstrip = $(@element)
-      itemsContainer = filmstrip.children('.filmstripWindow').children('ul')
-      items = itemsContainer.find('> li')
-      itemCount = items.size()
-      itemWidth = items.outerWidth()
-      itemsToShow = o.itemsToShow
-      itemsContainerWidth = (itemWidth * itemCount)
-      itemGroups = Math.ceil(itemCount / itemsToShow)
-      itemGroupShowing = 0
-      filmstripWindowWidth = itemWidth * itemsToShow
-      showControls = o.navigation or o.pagination
+      # nothing to do if pagination & navigation are disabled
+      return if not @showControls
+
+      # nothing to do if number of items is equal or less than amount to show
+      return if @itemCount <= @itemsToShow
 
       # adjust width of filmstrip list to contain all the items
-      itemsContainer.width itemsContainerWidth
+      @container.width @containerWidth
 
-      # autoplay object
-      autoplay =
+      # if navigation or pagination is enabled
+      if @showControls
+        @navigationInit() if @options.navigation
+        @paginationInit() if @options.navigation
+        @renderControls()
+        @bindEvents()
 
-        # initialize autoplay
-        start: ->
-          @timer = setInterval($.proxy(@triggerSlide, this), o.autoplaySpeed)
-          return true
+      # linkEntireItem enabled
+      @wrapItem() if @options.linkEntireItem
 
-        # trigger slide
-        triggerSlide: ->
+    play: ->
 
-          # temp kludge
-          itemGroupShowing = -1  if (itemGroupShowing + 1) is itemGroups
-          filmstrip.trigger 'filmstrip.move', 'next'
+    pause: ->
 
+    move: (thing) ->
+      @itemGroupShowing++
+      @updateCounter() if @options.counter
+      console.log(thing)
 
-        # stop autoplay
-        stop: ->
-          clearTimeout @timer
+    bindEvents: ->
 
+      @el.on('click', 'a', (e) =>
 
-      # if linkSlide enabled, wrap the contents of the slide in an href
-      if o.linkEntireItem
-        item = undefined
-        href = undefined
-        items.each (i) ->
-          item = items.eq(i)
-          href = item.find('a').attr('href')
-          item.contents().wrapAll '<a href="' + href + '">'  if typeof href isnt 'undefined'
+        target = $(e.target)
 
+        # advance strip
+        @move('next') if target.hasClass('filmstripNext') unless target.hasClass('disabled')
 
-      # check if navigation or pagination is enabled
-      if showControls
+        # recede strip
+        @move('previous') if target.hasClass('filmstripPrevious') unless target.hasClass('disabled')
 
-        # bail if navigation or pagination is unnecessary (ie. not enough items)
-        return  if itemCount <= itemsToShow
+        # jump to group
+        @move(target.data('filmstripGroup')) if target.hasClass('paginationButton')
 
-        # dom element that contains the filmstrip controls
-        controls = $('<div/>',
-          class: 'filmstripControls'
-        )
+      )
 
-        # the pagination object
-        pagination = undefined
+    navigationInit: ->
 
-        # the navigation object
-        navigation =
-          btnNext: ''
-          btnPrev: ''
+      # add some class names to filmstrip
+      @el
+        .addClass('filmstripNavigationShow')
+        .addClass('filmstripNavigation' + @options.navigationPosition)
 
+    paginationInit: ->
 
-        # if pagination is enabled, build the markup to display it
-        if o.pagination
+      # add some class names to filmstrip
+      @el
+        .addClass('filmstripPaginationShow')
 
-          # @todo
-          paginationGroupIndex = 0
+    # creates the navigation html
+    buildNavigationHtml: ->
 
-          # @todo
-          paginationItems = []
+      return '' if !@options.navigation
 
-          # @todo
-          className = ['active']
+      # previous button
+      this.btnPrev = $('<a>', {
+        class: 'filmstripPrevious disabled'
+        href: '#'
+        title: 'Previous'
+        text: 'Previous'
+      })
 
-          # @todo
-          i = 0
+      # next button
+      this.btnNext = $('<a>', {
+        class: 'filmstripNext'
+        href: '#'
+        title: 'Next'
+        text: 'Next'
+      })
 
-          while i < itemGroups
-            paginationItems.push '<a href="#" class="' + (className[i] or ' ') + '" data-filmstrip-group="' + i + '">' + (i + 1) + '</a>'
-            i++
+      return this
 
-          # append pagination items to pagination object
-          pagination = $('<span/>',
-            class: 'filmstripPagination'
-          ).on(o.paginationEvent, 'a', (e) ->
-            e.preventDefault()
-            autoplay.stop()  if o.autoplay
-            paginationGroupIndex = $(this).data('filmstripGroup')
-            filmstrip.trigger 'filmstrip.move', paginationGroupIndex
-            autoplay.start()  if o.autoplay
-          ).append(paginationItems.join(''))
+    # creates the counter html
+    buildCounterHtml: ->
 
-        # if navigation is enabled, build the markup to display it
-        if o.navigation
+      return '' if !@options.counter
 
-          # previous button
-          navigation.btnPrev = $('<a>',
-            class: 'filmstripPrevious disabled'
-            href: '#'
-            title: 'Previous'
-            text: 'Previous'
-          ).on('click', (e) ->
-            e.preventDefault()
-            autoplay.stop()  if o.autoplay
-            filmstrip.trigger 'filmstrip.move', 'previous'  unless $(this).hasClass('disabled')
-            autoplay.start()  if o.autoplay
-          )
+      counter = $('<div>', {
+        class: 'filmstripNavigationCounter',
+        html: '<span class="filmstripNavigationCounterCurrent">' +
+              @itemGroupShowing + '</span>' + ' of ' +
+              '<span class="filmstripNavigationCounterTotal">' +
+              @itemGroups + '</span>'
+      })
 
-          # next button
-          navigation.btnNext = $('<a>',
-            class: 'filmstripNext'
-            href: '#'
-            title: 'Next'
-            text: 'Next'
-          ).on('click', (e) ->
-            e.preventDefault()
-            autoplay.stop()  if o.autoplay
-            filmstrip.trigger 'filmstrip.move', 'next'  unless $(this).hasClass('disabled')
-            autoplay.start()  if o.autoplay
-          )
+      return counter
 
-        # add the navigation buttons to controls
-        controls.append(navigation.btnPrev).append(pagination).append navigation.btnNext
+    # updates the counter
+    updateCounter: ->
 
-        # @todo
-        moveStrip = (e, direction) ->
+      @el
+        .find('.filmstripNavigationCounterCurrent')
+        .text(@itemGroupShowing)
 
-          # @todo
-          mover = ->
-            itemsContainer.css 'left', -filmstripWindowWidth * itemGroupShowing
+    # creates the pagination html
+    buildPaginationHtml: ->
 
+      return '' if !@options.pagination
 
-          # @todo
-          selectDot = (index) ->
+      paginationItems = []
+      className = ['active']
+      i = 0
 
-            # @todo fix var name
-            tmp = pagination.find('a')
-            tmp.removeClass 'active'
-            tmp.eq(index).addClass 'active'
+      while i < @itemGroups
+        paginationItems.push '<a href="#" class="paginationButton ' +
+          (className[i] or '') + '" data-filmstrip-group="' + i + '">' +
+          (i + 1) + '</a>'
+        i++
 
+      pagination = $('<span/>',
+        class: 'filmstripPagination'
+        html: paginationItems
+      )
 
-          # direction is overloaded & can either be a number (item group index) or a string (next/previous)
-          if typeof direction is 'number'
+      return pagination
 
-            # @todo
-            if o.pagination
-              selectDot direction
-              itemGroupShowing = direction
-              mover()
-          else
+    # appends controls to dom
+    renderControls: ->
 
-            # this prevents queue buildup as the filmstrip is shifting position
-            #if (!filmstripIsMoving) {
-            if direction is 'previous' and itemGroupShowing > 0
+      controls = {
+        outer: $('<div/>', { class: 'filmstripControls' })
+        counter: @buildCounterHtml()
+        navigation: @buildNavigationHtml()
+        pagination: @buildPaginationHtml()
+      }
 
-              #filmstripIsMoving = true;
-              itemGroupShowing--
-              mover()
-            if direction is 'next' and itemGroupShowing < itemGroups - 1
+      html = controls.outer
+        .append(controls.navigation.btnPrev)
+        .append(controls.counter)
+        .append(controls.pagination)
+        .append(controls.navigation.btnNext)
 
-              #filmstripIsMoving = true;
-              itemGroupShowing++
-              mover()
-            selectDot itemGroupShowing  if o.pagination
+      @el.append(html)
 
-          #}
+    # wrap inner href around entire item
+    wrapItem: ->
 
-          # @todo this sucks; rewrite this next
-          if o.navigation
-            if itemGroupShowing is 0
-              navigation.btnPrev.addClass 'disabled'
-            else
-              navigation.btnPrev.removeClass 'disabled'
-            if itemGroupShowing is itemGroups - 1
-              navigation.btnNext.addClass 'disabled'
-            else
-              navigation.btnNext.removeClass 'disabled'
+      item = undefined
+      href = undefined
+      html = undefined
 
+      @items.each (i) =>
+        item = @items.eq(i)
+        href = item.find('a').attr('href')
+        html = '<a href="' + href + '">'
+        item.contents().wrapAll html if typeof href isnt 'undefined'
 
-        # add class names for styling
-        filmstrip.addClass('filmstripNavigationShow').addClass 'filmstripNavigation' + o.navigationPosition  if o.verboseClasses
-
-        # add controls to the dom & bind handlers
-        filmstrip.append(controls).on 'filmstrip.move', moveStrip
-
-      # if there are no items, remove container from dom
-      if itemCount is 0
-        filmstrip.remove()
-        return
-
-      # autoplay
-      # this whole plugin needs to be rewritten
-      autoplay.start()  if o.autoplay
-
-  # lightweight wrapper around the constructor that prevents multiple instantiations
+  # wrapper around the constructor that prevents multiple instantiations
   $.fn[pluginName] = (options) ->
     @each ->
       if !$.data(@, 'plugin_#{pluginName}')

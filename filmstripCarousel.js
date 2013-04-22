@@ -1,6 +1,7 @@
 /*!
 filmstripCarousel v1.0.5 (http://okize.github.com/)
-Copyright (c) 2013 | Licensed under the MIT license - http://www.opensource.org/licenses/mit-license.php
+Copyright (c) 2013 | Licensed under the MIT license
+http://www.opensource.org/licenses/mit-license.php
 */
 
 
@@ -19,13 +20,14 @@ Copyright (c) 2013 | Licensed under the MIT license - http://www.opensource.org/
     defaults = {
       autoplay: false,
       autoplaySpeed: 5000,
+      autoplayPauseOnHover: true,
       itemsToShow: 3,
       linkEntireItem: false,
       navigation: true,
       navigationPosition: 'Outside',
+      counter: false,
       pagination: true,
-      paginationEvent: 'click',
-      verboseClasses: true
+      paginationEvent: 'click'
     };
     Plugin = (function() {
       function Plugin(element, options) {
@@ -34,180 +36,167 @@ Copyright (c) 2013 | Licensed under the MIT license - http://www.opensource.org/
         this._defaults = defaults;
         this._name = pluginName;
         this.el = $(this.element);
+        this.container = this.el.children('.filmstripWindow').children('ul');
+        this.items = this.container.find('> li');
+        this.itemCount = this.items.size();
+        this.itemWidth = this.items.outerWidth();
+        this.itemsToShow = this.options.itemsToShow;
+        this.containerWidth = this.itemWidth * this.itemCount;
+        this.windowWidth = this.itemWidth * this.itemsToShow;
+        this.itemGroups = Math.ceil(this.itemCount / this.itemsToShow);
+        this.itemGroupShowing = 1;
+        this.showControls = this.options.navigation || this.options.pagination;
         this.init();
       }
 
       Plugin.prototype.init = function() {
-        var autoplay, className, controls, filmstrip, filmstripWindowWidth, href, i, item, itemCount, itemGroupShowing, itemGroups, itemWidth, items, itemsContainer, itemsContainerWidth, itemsToShow, moveStrip, navigation, o, pagination, paginationGroupIndex, paginationItems, showControls;
-
-        o = this.options;
-        filmstrip = $(this.element);
-        itemsContainer = filmstrip.children('.filmstripWindow').children('ul');
-        items = itemsContainer.find('> li');
-        itemCount = items.size();
-        itemWidth = items.outerWidth();
-        itemsToShow = o.itemsToShow;
-        itemsContainerWidth = itemWidth * itemCount;
-        itemGroups = Math.ceil(itemCount / itemsToShow);
-        itemGroupShowing = 0;
-        filmstripWindowWidth = itemWidth * itemsToShow;
-        showControls = o.navigation || o.pagination;
-        itemsContainer.width(itemsContainerWidth);
-        autoplay = {
-          start: function() {
-            this.timer = setInterval($.proxy(this.triggerSlide, this), o.autoplaySpeed);
-            return true;
-          },
-          triggerSlide: function() {
-            if ((itemGroupShowing + 1) === itemGroups) {
-              itemGroupShowing = -1;
-            }
-            return filmstrip.trigger('filmstrip.move', 'next');
-          },
-          stop: function() {
-            return clearTimeout(this.timer);
-          }
-        };
-        if (o.linkEntireItem) {
-          item = void 0;
-          href = void 0;
-          items.each(function(i) {
-            item = items.eq(i);
-            href = item.find('a').attr('href');
-            if (typeof href !== 'undefined') {
-              return item.contents().wrapAll('<a href="' + href + '">');
-            }
-          });
-        }
-        if (showControls) {
-          if (itemCount <= itemsToShow) {
-            return;
-          }
-          controls = $('<div/>', {
-            "class": 'filmstripControls'
-          });
-          pagination = void 0;
-          navigation = {
-            btnNext: '',
-            btnPrev: ''
-          };
-          if (o.pagination) {
-            paginationGroupIndex = 0;
-            paginationItems = [];
-            className = ['active'];
-            i = 0;
-            while (i < itemGroups) {
-              paginationItems.push('<a href="#" class="' + (className[i] || ' ') + '" data-filmstrip-group="' + i + '">' + (i + 1) + '</a>');
-              i++;
-            }
-            pagination = $('<span/>', {
-              "class": 'filmstripPagination'
-            }).on(o.paginationEvent, 'a', function(e) {
-              e.preventDefault();
-              if (o.autoplay) {
-                autoplay.stop();
-              }
-              paginationGroupIndex = $(this).data('filmstripGroup');
-              filmstrip.trigger('filmstrip.move', paginationGroupIndex);
-              if (o.autoplay) {
-                return autoplay.start();
-              }
-            }).append(paginationItems.join(''));
-          }
-          if (o.navigation) {
-            navigation.btnPrev = $('<a>', {
-              "class": 'filmstripPrevious disabled',
-              href: '#',
-              title: 'Previous',
-              text: 'Previous'
-            }).on('click', function(e) {
-              e.preventDefault();
-              if (o.autoplay) {
-                autoplay.stop();
-              }
-              if (!$(this).hasClass('disabled')) {
-                filmstrip.trigger('filmstrip.move', 'previous');
-              }
-              if (o.autoplay) {
-                return autoplay.start();
-              }
-            });
-            navigation.btnNext = $('<a>', {
-              "class": 'filmstripNext',
-              href: '#',
-              title: 'Next',
-              text: 'Next'
-            }).on('click', function(e) {
-              e.preventDefault();
-              if (o.autoplay) {
-                autoplay.stop();
-              }
-              if (!$(this).hasClass('disabled')) {
-                filmstrip.trigger('filmstrip.move', 'next');
-              }
-              if (o.autoplay) {
-                return autoplay.start();
-              }
-            });
-          }
-          controls.append(navigation.btnPrev).append(pagination).append(navigation.btnNext);
-          moveStrip = function(e, direction) {
-            var mover, selectDot;
-
-            mover = function() {
-              return itemsContainer.css('left', -filmstripWindowWidth * itemGroupShowing);
-            };
-            selectDot = function(index) {
-              var tmp;
-
-              tmp = pagination.find('a');
-              tmp.removeClass('active');
-              return tmp.eq(index).addClass('active');
-            };
-            if (typeof direction === 'number') {
-              if (o.pagination) {
-                selectDot(direction);
-                itemGroupShowing = direction;
-                mover();
-              }
-            } else {
-              if (direction === 'previous' && itemGroupShowing > 0) {
-                itemGroupShowing--;
-                mover();
-              }
-              if (direction === 'next' && itemGroupShowing < itemGroups - 1) {
-                itemGroupShowing++;
-                mover();
-              }
-              if (o.pagination) {
-                selectDot(itemGroupShowing);
-              }
-            }
-            if (o.navigation) {
-              if (itemGroupShowing === 0) {
-                navigation.btnPrev.addClass('disabled');
-              } else {
-                navigation.btnPrev.removeClass('disabled');
-              }
-              if (itemGroupShowing === itemGroups - 1) {
-                return navigation.btnNext.addClass('disabled');
-              } else {
-                return navigation.btnNext.removeClass('disabled');
-              }
-            }
-          };
-          if (o.verboseClasses) {
-            filmstrip.addClass('filmstripNavigationShow').addClass('filmstripNavigation' + o.navigationPosition);
-          }
-          filmstrip.append(controls).on('filmstrip.move', moveStrip);
-        }
-        if (itemCount === 0) {
-          filmstrip.remove();
+        if (!this.showControls) {
           return;
         }
-        if (o.autoplay) {
-          return autoplay.start();
+        if (this.itemCount <= this.itemsToShow) {
+          return;
         }
+        this.container.width(this.containerWidth);
+        if (this.showControls) {
+          if (this.options.navigation) {
+            this.navigationInit();
+          }
+          if (this.options.navigation) {
+            this.paginationInit();
+          }
+          this.renderControls();
+          this.bindEvents();
+        }
+        if (this.options.linkEntireItem) {
+          return this.wrapItem();
+        }
+      };
+
+      Plugin.prototype.play = function() {};
+
+      Plugin.prototype.pause = function() {};
+
+      Plugin.prototype.move = function(thing) {
+        this.itemGroupShowing++;
+        if (this.options.counter) {
+          this.updateCounter();
+        }
+        return console.log(thing);
+      };
+
+      Plugin.prototype.bindEvents = function() {
+        var _this = this;
+
+        return this.el.on('click', 'a', function(e) {
+          var target;
+
+          target = $(e.target);
+          if (!target.hasClass('disabled') ? target.hasClass('filmstripNext') : void 0) {
+            _this.move('next');
+          }
+          if (!target.hasClass('disabled') ? target.hasClass('filmstripPrevious') : void 0) {
+            _this.move('previous');
+          }
+          if (target.hasClass('paginationButton')) {
+            return _this.move(target.data('filmstripGroup'));
+          }
+        });
+      };
+
+      Plugin.prototype.navigationInit = function() {
+        return this.el.addClass('filmstripNavigationShow').addClass('filmstripNavigation' + this.options.navigationPosition);
+      };
+
+      Plugin.prototype.paginationInit = function() {
+        return this.el.addClass('filmstripPaginationShow');
+      };
+
+      Plugin.prototype.buildNavigationHtml = function() {
+        if (!this.options.navigation) {
+          return '';
+        }
+        this.btnPrev = $('<a>', {
+          "class": 'filmstripPrevious disabled',
+          href: '#',
+          title: 'Previous',
+          text: 'Previous'
+        });
+        this.btnNext = $('<a>', {
+          "class": 'filmstripNext',
+          href: '#',
+          title: 'Next',
+          text: 'Next'
+        });
+        return this;
+      };
+
+      Plugin.prototype.buildCounterHtml = function() {
+        var counter;
+
+        if (!this.options.counter) {
+          return '';
+        }
+        counter = $('<div>', {
+          "class": 'filmstripNavigationCounter',
+          html: '<span class="filmstripNavigationCounterCurrent">' + this.itemGroupShowing + '</span>' + ' of ' + '<span class="filmstripNavigationCounterTotal">' + this.itemGroups + '</span>'
+        });
+        return counter;
+      };
+
+      Plugin.prototype.updateCounter = function() {
+        return this.el.find('.filmstripNavigationCounterCurrent').text(this.itemGroupShowing);
+      };
+
+      Plugin.prototype.buildPaginationHtml = function() {
+        var className, i, pagination, paginationItems;
+
+        if (!this.options.pagination) {
+          return '';
+        }
+        paginationItems = [];
+        className = ['active'];
+        i = 0;
+        while (i < this.itemGroups) {
+          paginationItems.push('<a href="#" class="paginationButton ' + (className[i] || '') + '" data-filmstrip-group="' + i + '">' + (i + 1) + '</a>');
+          i++;
+        }
+        pagination = $('<span/>', {
+          "class": 'filmstripPagination',
+          html: paginationItems
+        });
+        return pagination;
+      };
+
+      Plugin.prototype.renderControls = function() {
+        var controls, html;
+
+        controls = {
+          outer: $('<div/>', {
+            "class": 'filmstripControls'
+          }),
+          counter: this.buildCounterHtml(),
+          navigation: this.buildNavigationHtml(),
+          pagination: this.buildPaginationHtml()
+        };
+        html = controls.outer.append(controls.navigation.btnPrev).append(controls.counter).append(controls.pagination).append(controls.navigation.btnNext);
+        return this.el.append(html);
+      };
+
+      Plugin.prototype.wrapItem = function() {
+        var href, html, item,
+          _this = this;
+
+        item = void 0;
+        href = void 0;
+        html = void 0;
+        return this.items.each(function(i) {
+          item = _this.items.eq(i);
+          href = item.find('a').attr('href');
+          html = '<a href="' + href + '">';
+          if (typeof href !== 'undefined') {
+            return item.contents().wrapAll(html);
+          }
+        });
       };
 
       return Plugin;

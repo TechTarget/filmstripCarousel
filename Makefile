@@ -24,10 +24,16 @@ default:
 	@echo "* compiling jade templates..."
 	@jade -P ./example/index.jade
 
+	@echo "* compiling sass..."
+	@sass ./example/sass/style.scss ./example/css/style.css
+
 	@echo "* compiling coffeescript..."
 	@coffee -p ${SCRIPT_NAME}.coffee > ${SCRIPT_NAME}.js
 
-	@echo "* linting..."
+	@echo "* linting coffeescript..."
+	@coffeelint ${SCRIPT_NAME}.coffee
+
+	@echo "* linting javascript..."
 	@jshint ${SCRIPT_NAME}.js --show-non-errors
 
 	@echo "* minifying..."
