@@ -4,6 +4,12 @@
 
 
 
+
+
+#micrositeContentColumnLeft .filmstripThumbnail img { height: 60px; width: 200px; margin-bottom: 10px; }
+#micrositeContentColumnLeft .filmstripWindow > ul > li {  width: 200px; padding: 0 10px 0 0; margin: 0; }
+
+
 /*
 .filmstripWindow > ul > li { border: 1px solid blue; }
 .filmstrip { border: 1px solid pink; }
@@ -11,8 +17,3 @@
 .filmstripNavigationInline .filmstripControls { border: 1px solid maroon; }
 .filmstripNavigationOutside .filmstripPrevious, .filmstripNavigationOutside .filmstripNext { background-color: red; }
 */
-
-
-#micrositeContentColumnLeft .filmstripThumbnail img { height: 60px; width: 200px; margin-bottom: 10px; }
-#micrositeContentColumnLeft .filmstripWindow > ul > li {  width: 200px; padding: 0 10px 0 0; margin: 0; }
-

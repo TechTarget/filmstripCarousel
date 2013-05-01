@@ -1,5 +1,4 @@
-# LINT & MINIFY
-# jshint (>=0.9) & uglifyjs (>=2.2) are required
+# Required npm modules: jshint (1.1.x), uglifyjs (2.2.x) & coffeelint (0.5.x)
 
 SCRIPT_NAME = filmstripCarousel
 FILESIZE_MAX = 1000
@@ -25,15 +24,9 @@ default:
 	@jade -P ./example/index.jade
 
 	@echo "* compiling sass..."
-	@sass ./example/sass/style.scss ./example/css/style.css
+	@sass --scss --compass --style expanded ./example/sass/style.scss ./example/css/style.css
 
-	@echo "* compiling coffeescript..."
-	@coffee -p ${SCRIPT_NAME}.coffee > ${SCRIPT_NAME}.js
-
-	@echo "* linting coffeescript..."
-	@coffeelint ${SCRIPT_NAME}.coffee
-
-	@echo "* linting javascript..."
+	@echo "* linting..."
 	@jshint ${SCRIPT_NAME}.js --show-non-errors
 
 	@echo "* minifying..."
