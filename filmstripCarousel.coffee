@@ -20,8 +20,6 @@ http://www.opensource.org/licenses/mit-license.php
 
   # default plugin options
   defaults =
-    autoplay: false
-    autoplaySpeed: 5000
     autoplayPauseOnHover: true
     itemsToShow: 3
     linkEntireItem: false
@@ -72,11 +70,6 @@ http://www.opensource.org/licenses/mit-license.php
 
       # linkEntireItem enabled
       @wrapItem() if @options.linkEntireItem
-
-    play: ->
-
-    pause: ->
-
 
     # event hooks for the controls
     bindEvents: ->

@@ -18,8 +18,6 @@ http://www.opensource.org/licenses/mit-license.php
 
     pluginName = 'filmstripCarousel';
     defaults = {
-      autoplay: false,
-      autoplaySpeed: 5000,
       autoplayPauseOnHover: true,
       itemsToShow: 3,
       linkEntireItem: false,
@@ -71,10 +69,6 @@ http://www.opensource.org/licenses/mit-license.php
           return this.wrapItem();
         }
       };
-
-      Plugin.prototype.play = function() {};
-
-      Plugin.prototype.pause = function() {};
 
       Plugin.prototype.bindEvents = function() {
         var _this = this;
