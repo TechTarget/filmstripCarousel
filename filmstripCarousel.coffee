@@ -1,5 +1,5 @@
 ###!
-filmstripCarousel v1.0.5 (http://okize.github.com/)
+filmstripCarousel v1.0.6 (http://okize.github.com/)
 Copyright (c) 2013 | Licensed under the MIT license
 http://www.opensource.org/licenses/mit-license.php
 ###
