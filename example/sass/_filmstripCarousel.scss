@@ -1,8 +1,22 @@
+@import "compass/css3/transition";
+
+// component
+$fc-border-color: transparent;
+$fc-transition-speed: .5s;
+$fc-item-width: 290px;
+
+
 /* filmstrip widget */
-/* widget's parent container width must be calculated like this: (width of .filmstripPrevious) + (width of .filmstripNext) + N(width of .filmstripWindow > ul > li) where N = the number of items on display at a time */
+/*
+widget's parent container width must be calculated like this:
+(width of .filmstripPrevious) + (width of .filmstripNext) +
+N(width of .filmstripWindow > ul > li)
+where N = the number of items on display at a time
+*/
 .filmstrip {
   position: relative;
   margin: 0 0 20px;
+  border: 1px solid $fc-border-color;
 
   .filmstripWindow {
     overflow: hidden;
@@ -17,18 +31,15 @@
       width: 10000px;
       list-style-type: none;
       white-space: nowrap;
-      -webkit-transition: left .5s;
-      -moz-transition: left .5s;
-      -ms-transition: left .5s;
-      -o-transition: left .5s;
-      transition: left .5s;
+      @include transition-property(left);
+      @include transition-duration($fc-transition-speed);
 
       li {
         position: relative;
         display: block;
         float: left;
         padding: 5px 10px 0;
-        width: 270px;
+        width: $fc-item-width;
         white-space: normal;
       }
 
@@ -40,6 +51,10 @@
     margin: 0 0 5px;
     font-weight: bold;
     font-size: 14px;
+
+    h4 {
+      margin: 0 0 10px !important;
+    }
   }
 
   .filmstripThumbnail {
@@ -94,6 +109,10 @@
       cursor: default;
     }
 
+    &:focus {
+      background-color: transparent;
+    }
+
   }
 
   .filmstripNext {
@@ -104,45 +123,47 @@
       cursor: default;
     }
 
+    &:focus {
+      background-color: transparent;
+    }
+
   }
 
-  .filmstripPrevious:focus, .filmstripNext:focus {
-    background-color: transparent;
+  &.filmstripNavigationOutside {
+
+    &.filmstrip {
+      padding: 0 40px;
+    }
+
+    .filmstripPrevious, .filmstripNext {
+      position: absolute;
+      top: 0;
+      width: 40px;
+      height: 220px;
+      background-position: 50% 50%;
+    }
+
+    .filmstripPrevious {
+      left: 0;
+    }
+
+    .filmstripNext {
+      right: 0;
+    }
+
   }
 
-  .filmstripNavigationCounter {
-    position: absolute;
-    top: -10px;
-    right: 0;
-  }
 
-  &.filmstripNavigationOutside.filmstrip {
-    padding: 0 40px;
-  }
+  &.filmstripNavigationInline {
 
-  &.filmstripNavigationOutside .filmstripPrevious,
-  &.filmstripNavigationOutside .filmstripNext {
-    position: absolute;
-    top: 0;
-    width: 40px;
-    height: 220px;
-    background-position: 50% 50%;
-  }
+    .filmstripNext {
+      margin: 0 0 0 20px;
+    }
 
-  &.filmstripNavigationOutside .filmstripPrevious {
-    left: 0;
-  }
+    .filmstripPrevious {
+      margin: 0 20px 0 0;
+    }
 
-  &.filmstripNavigationOutside .filmstripNext {
-    right: 0;
-  }
-
-  &.filmstripNavigationInline .filmstripNext {
-    margin: 0 0 0 20px;
-  }
-
-  &.filmstripNavigationInline .filmstripPrevious {
-    margin: 0 20px 0 0;
   }
 
   .filmstripPagination {
@@ -166,15 +187,22 @@
     white-space: nowrap;
     *text-indent: 0;
     *font-size: 0;
+    &.active {
+      background-position: -11px 0;
+      cursor: default;
+    }
+    &:focus {
+      background-color: transparent;
+    }
   }
 
-  .filmstripPagination a.active {
-    background-position: -11px 0;
-    cursor: default;
-  }
-
-  .filmstripPagination a:focus {
-    background-color: transparent;
+  .filmstripNavigationCounter {
+    color: #fff;
+    background-color: #333;
+    padding: 2px 4px;
+    position: absolute;
+    top: -10px;
+    right: -20px;
   }
 
 }

@@ -1,7 +1,6 @@
 /* base */
 html {
   font-size: 100%;
-  -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
 }
 
@@ -28,6 +27,12 @@ audio, canvas, video {
 }
 
 /* 'namespace' as much of normalize as possible due to embedded microsites */
+#micrositeContainer * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 #micrositeContainer p {
   margin: 0 0 20px;
 }
@@ -202,10 +207,16 @@ a:focus {
 }
 
 /* filmstrip widget */
-/* widget's parent container width must be calculated like this: (width of .filmstripPrevious) + (width of .filmstripNext) + N(width of .filmstripWindow > ul > li) where N = the number of items on display at a time */
+/*
+widget's parent container width must be calculated like this:
+(width of .filmstripPrevious) + (width of .filmstripNext) +
+N(width of .filmstripWindow > ul > li)
+where N = the number of items on display at a time
+*/
 .filmstrip {
   position: relative;
   margin: 0 0 20px;
+  border: 1px solid transparent;
 }
 .filmstrip .filmstripWindow {
   overflow: hidden;
@@ -220,24 +231,30 @@ a:focus {
   width: 10000px;
   list-style-type: none;
   white-space: nowrap;
-  -webkit-transition: left .5s;
-  -moz-transition: left .5s;
-  -ms-transition: left .5s;
-  -o-transition: left .5s;
-  transition: left .5s;
+  -webkit-transition-property: left;
+  -moz-transition-property: left;
+  -o-transition-property: left;
+  transition-property: left;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
 }
 .filmstrip .filmstripWindow ul li {
   position: relative;
   display: block;
   float: left;
   padding: 5px 10px 0;
-  width: 270px;
+  width: 290px;
   white-space: normal;
 }
 .filmstrip .filmstripThumbnailHeader {
   margin: 0 0 5px;
   font-weight: bold;
   font-size: 14px;
+}
+.filmstrip .filmstripThumbnailHeader h4 {
+  margin: 0 0 10px !important;
 }
 .filmstrip .filmstripThumbnail {
   width: auto;
@@ -282,6 +299,9 @@ a:focus {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAASCAYAAACNdSR1AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAALJJREFUeNpi/P//PwMyOH7iqAGQOs+ACR4yYRGcwIAdFDChmRoApOyxKDxoaWG9gQlJoQAeUxNABLLJBUAsj0VhI9DUB3DFQFMVgFQ9Nk8h2wYzeQEuTwFN/QBXTMhTyAJM+IIKXYCJgQTAhM0EXJHDBHXXQSyK7aH+wXBGAi7ToZGFUAwN9EYsiuWRncmE5saHWDTUQyMNoRga+Lg8C440Rizp+QCOSApkIiYyYM4ECDAAFAo69b+iA5cAAAAASUVORK5CYII=);
   cursor: default;
 }
+.filmstrip .filmstripPrevious:focus {
+  background-color: transparent;
+}
 .filmstrip .filmstripNext {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAASCAYAAACNdSR1AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAALtJREFUeNpiNG24+ICBgUGeARMYnqrXu4AswATEBQzYwQR0ASag7g1A+iAWxfZmjZcC0E0GgQRcpgM1CKAoBpoOcncjFsXyyM5kQnPjQywa6oGmK6AoBpr+AY9nF4AIxv///6OIAk05APIcFg2BTFgEcQYlEwMJgImYyIDZyITm3gAc7j0IijwmJIUCeExNQHdGAY4E1QiNNIhiaKDXY1H4ENk2JuRAx+YpaGRBFBPyFHrQ4QwqdAGAAAMAqE439pizWsYAAAAASUVORK5CYII=);
 }
@@ -289,13 +309,8 @@ a:focus {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAASCAYAAACNdSR1AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAALtJREFUeNpiPHb8yAMGBgZ5BkxgaGlhfQFZgAmICxiwgwnoAkxA3RuA9EEsiu2PnzgagG4yCCTgMh2oQQBFMdB0kLsbsSiWR3YmE5obH2LRUA80XQFFMdD0D3g8uwBEMP7//x9FFGjKAZDnsGgIZMIiiDMomRhIAEzERAbMRiY09wbgcO9BUOQxISkUwGNqArozCnAkqEZopEEUQwO9HovCh8i2MSEHOjZPQSMLopiQp9CDDmdQoQsABBgA3m04wYRCMrsAAAAASUVORK5CYII=);
   cursor: default;
 }
-.filmstrip .filmstripPrevious:focus, .filmstrip .filmstripNext:focus {
+.filmstrip .filmstripNext:focus {
   background-color: transparent;
-}
-.filmstrip .filmstripNavigationCounter {
-  position: absolute;
-  top: -10px;
-  right: 0;
 }
 .filmstrip.filmstripNavigationOutside.filmstrip {
   padding: 0 40px;
@@ -347,6 +362,14 @@ a:focus {
 .filmstrip .filmstripPagination a:focus {
   background-color: transparent;
 }
+.filmstrip .filmstripNavigationCounter {
+  color: #fff;
+  background-color: #333;
+  padding: 2px 4px;
+  position: absolute;
+  top: -10px;
+  right: -20px;
+}
 
 #micrositeContent h2 {
   font-size: 25px;
@@ -378,15 +401,7 @@ a:focus {
 }
 
 #micrositeContentColumnLeft .filmstripWindow > ul > li {
-  width: 200px;
+  width: 210px;
   padding: 0 10px 0 0;
   margin: 0;
 }
-
-/*
-.filmstripWindow > ul > li { border: 1px solid blue; }
-.filmstrip { border: 1px solid pink; }
-.filmstripControls { border: 1px solid green; height: 20px; }
-.filmstripNavigationInline .filmstripControls { border: 1px solid maroon; }
-.filmstripNavigationOutside .filmstripPrevious, .filmstripNavigationOutside .filmstripNext { background-color: red; }
-*/

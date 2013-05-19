@@ -4,7 +4,7 @@ SCRIPT_NAME = filmstripCarousel
 FILESIZE_MAX = 1000
 FILESIZE_GZIP = `gzip -c ${SCRIPT_NAME}.min.js | wc -c`
 FILESIZE_PASS = "${FILESIZE_GZIP} bytes  \(^_^)/"
-FILESIZE_FAIL = "${FILESIZE_GZIP} bytes  ^(>_<)^"
+FILESIZE_FAIL = "${FILESIZE_GZIP} bytes  (╯°□°）╯︵ ┻━┻"
 
 define FILESIZE_CHECK
 	if [ ${FILESIZE_GZIP} -gt ${FILESIZE_MAX} ]; then \
@@ -26,7 +26,13 @@ default:
 	@echo "* compiling sass..."
 	@sass --scss --compass --style expanded ./example/sass/style.scss ./example/css/style.css
 
-	@echo "* linting..."
+	@echo "* compiling coffeescript..."
+	@coffee -p ${SCRIPT_NAME}.coffee > ${SCRIPT_NAME}.js
+
+	@echo "* linting coffeescript..."
+	@coffeelint ${SCRIPT_NAME}.coffee
+
+	@echo "* linting javascript..."
 	@jshint ${SCRIPT_NAME}.js --show-non-errors
 
 	@echo "* minifying..."

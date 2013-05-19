@@ -15,8 +15,8 @@ html(lang='en')
             h2 Header
           #micrositeContent
             #micrositeContentColumnLeft
-              h6 6 items, navigation inline, pagination on
-              - var componentId = 'fsInline1', itemCount = 6, imageSize = '200x60'
+              h6 12 items, navigation inline, pagination on
+              - var componentId = 'fsInline1', itemCount = 12, imageSize = '200x60'
               include filmstripCarousel
               h6 3 items, navigation inline, pagination on
               - var componentId = 'fsInline2', itemCount = 3, imageSize = '200x60'
@@ -24,13 +24,15 @@ html(lang='en')
               h6 42 items, navigation inline, pagination on
               - var componentId = 'fsInline3', itemCount = 42, imageSize = '200x60'
               include filmstripCarousel
-              h6 9 items, navigation inline, pagination off
-              - var componentId = 'fsInline4', itemCount = 9, imageSize = '200x60'
+              h6 6 items, navigation inline, pagination off
+              - var componentId = 'fsInline4', itemCount = 6, imageSize = '200x60'
               include filmstripCarousel
               h6 9 items, navigation off, pagination on
               - var componentId = 'fsInline5', itemCount = 9, imageSize = '200x60'
               include filmstripCarousel
               h6 9 items, navigation off, pagination off
+              - var componentId = 'fsInline6', itemCount = 9, imageSize = '200x60'
+              include filmstripCarousel
             #micrositeContentColumnRight
               h2 Right Column
             #micrositeContentColumnFull

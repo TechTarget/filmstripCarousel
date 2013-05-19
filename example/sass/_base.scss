@@ -1,5 +1,7 @@
+@import "compass/css3";
+
 /* base */
-html { font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+html { font-size: 100%; -ms-text-size-adjust: 100%; }
 body { font-family: arial, sans-serif; margin: 0; font-size: 1em; line-height: 1.4; }
 
 /* html5 display definitions */
@@ -8,6 +10,7 @@ audio, canvas, video { display: inline-block; *display: inline; *zoom: 1; }
 [hidden] { display: none; }
 
 /* 'namespace' as much of normalize as possible due to embedded microsites */
+#micrositeContainer * { @include box-sizing(border-box); }
 #micrositeContainer p { margin: 0 0 20px; }
 #micrositeContainer a:hover, #micrositeContainer a:active { outline: 0; }
 #micrositeContainer b, #micrositeContainer strong { font-weight: bold; }

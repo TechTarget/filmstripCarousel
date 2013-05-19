@@ -1,6 +1,6 @@
-# filmstripCarousel
+# Filmstrip Carousel
 
-## Available for use under the [MIT License](http://www.opensource.org/licenses/MIT)
+### Available for use under the [MIT License](http://www.opensource.org/licenses/MIT)
 
 Copyright (c) 2013 by TechTarget
 
