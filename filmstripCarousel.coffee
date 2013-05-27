@@ -1,5 +1,5 @@
 ###!
-filmstripCarousel v1.0.6 (http://okize.github.com/)
+filmstripCarousel v1.0.7 (http://okize.github.com/)
 Copyright (c) 2013 | Licensed under the MIT license
 http://www.opensource.org/licenses/mit-license.php
 ###
@@ -20,14 +20,16 @@ http://www.opensource.org/licenses/mit-license.php
 
   # default plugin options
   defaults =
+    autoplay: false
+    autoplaySpeed: 5000
     autoplayPauseOnHover: true
     itemsToShow: 3
     linkEntireItem: false
-    navigation: true
-    navigationPosition: 'Outside' # Inline or Outside
     counter: false
     pagination: true
     paginationEvent: 'click' # click or mouseover
+    navigation: true
+    navigationPosition: 'Outside' # Inline or Outside
 
   # plugin constructor
   class Plugin
@@ -70,6 +72,41 @@ http://www.opensource.org/licenses/mit-license.php
 
       # linkEntireItem enabled
       @wrapItem() if @options.linkEntireItem
+
+      # if autoplay enabled kick-start it here
+      if @options.autoplay
+        @autoplayStart()
+
+        # pause the autoplay when users mouse is over the carousel
+        if @options.autoplayPauseOnHover
+          @el.on(
+            mouseenter: =>
+              @autoplayStop()
+            ,
+            mouseleave: =>
+              @autoplayStart()
+          )
+
+    # initialize autoplay
+    autoplayStart: ->
+      @timer = setInterval(
+        $.proxy(@autoplayMove, this ),
+        @options.autoplaySpeed
+      )
+      return
+
+    # trigger slide
+    autoplayMove: ->
+      if @itemGroupShowing < (@itemGroupTotal - 1)
+        @itemGroupShowing++
+      else
+        @itemGroupShowing = 0
+      @updateControlsState()
+      @moveItems()
+
+    # stop autoplay
+    autoplayStop: ->
+      clearTimeout @timer
 
     # event hooks for the controls
     bindEvents: ->

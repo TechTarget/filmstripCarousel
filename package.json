@@ -2,7 +2,7 @@
   "name": "filmstripCarousel",
   "main": "filmstripCarousel",
   "description": "jQuery plugin for filmstrip-type carousel",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "author": "Morgan Wigmanich <okize123@gmail.com> (http://github.com/okize)",
   "license": "MIT"
 }
