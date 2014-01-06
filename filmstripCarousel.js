@@ -1,5 +1,6 @@
 /*!
-filmstripCarousel v1.0.7 (https://github.com/okize)
+filmstripCarousel v1.0.7 (https://github.com/TechTarget/filmstripCarousel)
+Author: Morgan Wigmanich <okize123@gmail.com> (http://github.com/okize)
 Copyright (c) 2013 | Licensed under the MIT license
 http://www.opensource.org/licenses/mit-license.php
 */
@@ -15,7 +16,6 @@ http://www.opensource.org/licenses/mit-license.php
   })(function($) {
     'use strict';
     var Plugin, defaults, pluginName;
-
     pluginName = 'filmstripCarousel';
     defaults = {
       autoplay: false,
@@ -51,7 +51,6 @@ http://www.opensource.org/licenses/mit-license.php
 
       Plugin.prototype.init = function() {
         var _this = this;
-
         if (!this.showControls) {
           return;
         }
@@ -107,10 +106,8 @@ http://www.opensource.org/licenses/mit-license.php
 
       Plugin.prototype.bindEvents = function() {
         var _this = this;
-
         return this.el.on('click', 'a', function(e) {
           var control, currentGroup;
-
           e.preventDefault();
           control = $(e.target);
           currentGroup = _this.itemGroupShowing;
@@ -171,7 +168,6 @@ http://www.opensource.org/licenses/mit-license.php
 
       Plugin.prototype.buildCounterHtml = function() {
         var counter;
-
         if (!this.options.counter) {
           return '';
         }
@@ -184,7 +180,6 @@ http://www.opensource.org/licenses/mit-license.php
 
       Plugin.prototype.buildPaginationHtml = function() {
         var className, i, pagination, paginationItems;
-
         if (!this.options.pagination) {
           return '';
         }
@@ -204,7 +199,6 @@ http://www.opensource.org/licenses/mit-license.php
 
       Plugin.prototype.renderControls = function() {
         var controls, html;
-
         controls = {
           outer: $('<div/>', {
             "class": 'filmstripControls'
@@ -219,7 +213,6 @@ http://www.opensource.org/licenses/mit-license.php
 
       Plugin.prototype.updateControlsState = function() {
         var nav;
-
         if (this.options.navigation) {
           nav = this.el.find('.filmstripPrevious, .filmstripNext').removeClass('disabled');
           if (this.itemGroupShowing === 0) {
@@ -239,7 +232,6 @@ http://www.opensource.org/licenses/mit-license.php
       Plugin.prototype.wrapItem = function() {
         var href, html, item,
           _this = this;
-
         item = void 0;
         href = void 0;
         html = void 0;
