@@ -1,8 +1,13 @@
 {
   "name": "filmstripCarousel",
-  "main": "filmstripCarousel",
-  "description": "jQuery plugin for filmstrip-type carousel",
+  "private": true,
+  "main": "filmstripCarousel.js",
+  "description": "jQuery plugin for filmstrip carousel",
   "version": "1.0.7",
   "author": "Morgan Wigmanich <okize123@gmail.com> (http://github.com/okize)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TechTarget/filmstripCarousel"
+  },
   "license": "MIT"
 }
